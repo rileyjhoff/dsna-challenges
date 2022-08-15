@@ -1,21 +1,21 @@
 // CH03-fizz-buzz
 function fizzBuzz(number) {
-  const arr = [];
+  const list = [];
   for (let i = 1; i <= number; i++) {
     if (i % 3 === 0 && i % 5 === 0) {
-      arr.push('FizzBuzz');
+      list.push('FizzBuzz');
     } else if (i % 3 === 0) {
-      arr.push('Fizz');
+      list.push('Fizz');
     } else if (i % 5 === 0) {
-      arr.push('Buzz');
-    } else arr.push(i);
+      list.push('Buzz');
+    } else list.push(i);
   }
-  return arr;
+  return list;
 }
 
 test('fizz buzz', () => {
-  const arr = fizzBuzz(16);
-  expect(arr).toEqual([
+  const list = fizzBuzz(16);
+  expect(list).toEqual([
     1,
     2,
     'Fizz',

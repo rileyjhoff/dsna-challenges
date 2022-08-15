@@ -27,3 +27,19 @@ test('titleCase', () => {
   const string = titleCase('alchemy ROCKS goLD');
   expect(string).toEqual('Alchemy Rocks Gold');
 });
+
+// CH02.1-oddish-evenish
+function oddishOrEvenish(number) {
+  const numbers = number.split('');
+  const sum = numbers.reduce((acc, curr) => {
+    return (acc += Number(curr));
+  }, 0);
+  return sum % 2 === 0 ? 'Evenish' : 'Oddish';
+}
+
+test('oddishOrEvenish', () => {
+  const output121 = oddishOrEvenish('121');
+  expect(output121).toEqual('Evenish');
+  const output41 = oddishOrEvenish('41');
+  expect(output41).toEqual('Oddish');
+});

@@ -57,3 +57,22 @@ test('array shift', () => {
   expect(arr).toEqual([2, 3, 4]);
   expect(removedItem).toBe(1);
 });
+
+// CH07-hasDuplicates
+function hasDuplicates(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) return true;
+    }
+  }
+  return false;
+}
+
+test('array hasDuplicates', () => {
+  const arr1 = [1, 2, 3, 4];
+  const hasDuplicates1 = hasDuplicates(arr1);
+  const arr2 = [1, 2, 3, 2];
+  const hasDuplicates2 = hasDuplicates(arr2);
+  expect(hasDuplicates1).toBe(false);
+  expect(hasDuplicates2).toBe(true);
+});

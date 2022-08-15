@@ -1,3 +1,4 @@
+// CH-inventory-checker
 function inventoryChecker(inventory, item) {
   if (inventory[item.itemName] > 5) {
     return 'plenty of inventory';

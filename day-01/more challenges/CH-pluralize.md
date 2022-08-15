@@ -1,0 +1,26 @@
+CH: Pluralize Words!
+---
+
+## Challenge
+
+Given a list of words in the singular form, return a set of those words in the plural form **if they appear more than once in the list**.
+
+### Notes
+- This is an **oversimplification** of the English language so no edge cases will appear.
+- Only focus on whether or not to add an s to the ends of words.
+
+## Function Interface
+
+```js
+function pluralize(words) {
+```
+
+> **You can assume valid input**
+
+## Test Cases
+
+Input | Output
+---|---
+`["cow", "pig", "cow", "cow"]` | `["cows", "pig"]`
+`["table", "table", "table"]` | `["tables"]`
+`["chair", "pencil", "arm"]` | `["chair", "pencil", "arm"]`

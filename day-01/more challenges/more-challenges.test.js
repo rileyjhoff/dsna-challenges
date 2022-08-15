@@ -120,3 +120,24 @@ test('progress days', () => {
   const output3 = progressDays([9, 9]);
   expect(output3).toBe(0);
 });
+
+// CH-total-volume
+function totalVolume(...boxes) {
+  const boxesArr = [...boxes];
+  let totalVolume = 0;
+  for (let i = 0; i < boxesArr.length; i++) {
+    totalVolume += boxesArr[i].reduce((acc, curr) => {
+      return acc * curr;
+    }, 1);
+  }
+  return totalVolume;
+}
+
+test('total volume', () => {
+  const output1 = totalVolume([4, 2, 4], [3, 3, 3], [1, 1, 2], [2, 1, 1]);
+  expect(output1).toBe(63);
+  const output2 = totalVolume([2, 2, 2], [2, 1, 1]);
+  expect(output2).toBe(10);
+  const output3 = totalVolume([1, 1, 1]);
+  expect(output3).toBe(1);
+});

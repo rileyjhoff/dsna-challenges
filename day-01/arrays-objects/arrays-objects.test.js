@@ -29,10 +29,10 @@ function push(arr, item) {
 }
 
 test('array push', () => {
-  const arr = [1, 2, 3];
-  const newLength = push(arr, 4);
-  expect(arr).toEqual([1, 2, 3, 4]);
-  expect(newLength).toBe(4);
+  const arr = ['a', 'b', 'c'];
+  const output = push(arr, 'd');
+  expect(arr).toEqual(['a', 'b', 'c', 'd']);
+  expect(output).toBe(4);
 });
 
 // CH02-pop
@@ -43,10 +43,10 @@ function pop(arr) {
 }
 
 test('array pop', () => {
-  const arr = [1, 2, 3, 4];
-  const removedItem = pop(arr);
-  expect(arr).toEqual([1, 2, 3]);
-  expect(removedItem).toBe(4);
+  const arr = ['a', 'b', 'c'];
+  const output = pop(arr);
+  expect(arr).toEqual(['a', 'b']);
+  expect(output).toBe('c');
 });
 
 // CH04-unshift
@@ -59,10 +59,10 @@ function unshift(arr, item) {
 }
 
 test('array unshift', () => {
-  const arr = [1, 2, 3];
-  const newLength = unshift(arr, 4);
-  expect(arr).toEqual([4, 1, 2, 3]);
-  expect(newLength).toBe(4);
+  const arr = ['a', 'b', 'c'];
+  const output = unshift(arr, 'd');
+  expect(arr).toEqual(['d', 'a', 'b', 'c']);
+  expect(output).toBe(4);
 });
 
 // CH05-shift
@@ -76,10 +76,10 @@ function shift(arr) {
 }
 
 test('array shift', () => {
-  const arr = [1, 2, 3, 4];
-  const removedItem = shift(arr);
-  expect(arr).toEqual([2, 3, 4]);
-  expect(removedItem).toBe(1);
+  const arr = ['a', 'b', 'c'];
+  const output = shift(arr);
+  expect(arr).toEqual(['b', 'c']);
+  expect(output).toBe('a');
 });
 
 // CH07-hasDuplicates
@@ -93,10 +93,8 @@ function hasDuplicates(arr) {
 }
 
 test('array hasDuplicates', () => {
-  const arr1 = [1, 2, 3, 4];
-  const hasDuplicates1 = hasDuplicates(arr1);
-  const arr2 = [1, 2, 3, 2];
-  const hasDuplicates2 = hasDuplicates(arr2);
-  expect(hasDuplicates1).toBe(false);
-  expect(hasDuplicates2).toBe(true);
+  const output1 = hasDuplicates(['j', 'o', 'w', 'w']);
+  const output2 = hasDuplicates(['m', 'b', 'p', 'x']);
+  expect(output1).toBe(true);
+  expect(output2).toBe(false);
 });

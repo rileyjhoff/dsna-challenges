@@ -124,3 +124,49 @@ test('anagrams', () => {
   const output2 = anagrams('pictorialness', 'documentarily');
   expect(output2).toBe(false);
 });
+
+// CH05-unique-string
+function uniqueString(strings) {
+  for (let i = 0; i < strings.length - 1; i++) {
+    const initialLength = strings.length;
+    const letters = [...new Set(strings[i].toLowerCase().split(''))]
+      .sort()
+      .join('');
+    for (let j = i + 1; j < strings.length; j++) {
+      const compareLetters = [...new Set(strings[j].toLowerCase().split(''))]
+        .sort()
+        .join('');
+      if (letters === compareLetters) {
+        strings.splice(j, 1);
+        j--;
+      }
+    }
+    if (strings.length < initialLength) {
+      strings.splice(i, 1);
+    }
+  }
+  return strings[0];
+}
+
+test('uniqueString', () => {
+  const output1 = uniqueString([
+    'Aa',
+    'aaa',
+    'aaaaa',
+    'BbBb',
+    'Aaaa',
+    'AaAaAa',
+    'a',
+  ]);
+  expect(output1).toBe('BbBb');
+  const output2 = uniqueString([
+    'abc',
+    'acb',
+    'bac',
+    'foo',
+    'bca',
+    'cab',
+    'cba',
+  ]);
+  expect(output2).toBe('foo');
+});

@@ -49,3 +49,29 @@ test('convenience store', () => {
   const output5 = changeEnough([1, 0, 5, 219], 19.99);
   expect(output5).toBe(false);
 });
+
+// CH-jewels-stones
+function countJewels(jewels, stones) {
+  const jewelsArr = jewels.split('');
+  const stonesArr = stones.split('');
+  const stonesCountObj = stonesArr.reduce((acc, curr) => {
+    if (acc[curr]) {
+      acc[curr]++;
+    } else acc[curr] = 1;
+    return acc;
+  }, {});
+  let jewelCount = 0;
+  for (let i = 0; i < jewelsArr.length; i++) {
+    if (stonesCountObj[jewelsArr[i]]) {
+      jewelCount += stonesCountObj[jewelsArr[i]];
+    }
+  }
+  return jewelCount;
+}
+
+test('jewels stones', () => {
+  const output1 = countJewels('aA', 'aAAbbbb');
+  expect(output1).toBe(3);
+  const output2 = countJewels('z', 'ZZ');
+  expect(output2).toBe(0);
+});

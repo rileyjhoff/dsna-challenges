@@ -7,7 +7,7 @@ function multiplesOfN(n) {
   return list;
 }
 
-test('multiplesOfN', () => {
+test('multiples of n', () => {
   const output5 = multiplesOfN(5);
   expect(output5).toEqual([5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
   const output25 = multiplesOfN(25);
@@ -25,7 +25,7 @@ function reverseWords(sentence) {
   return words.join(' ');
 }
 
-test('reverseWords', () => {
+test('reverse sentence words', () => {
   const output = reverseWords('alchemy rocks gold');
   expect(output).toEqual('ymehcla skcor dlog');
 });
@@ -41,7 +41,7 @@ function titleCase(sentence) {
   return words.join(' ');
 }
 
-test('titleCase', () => {
+test('title case words', () => {
   const output = titleCase('alchemy ROCKS goLD');
   expect(output).toEqual('Alchemy Rocks Gold');
 });
@@ -55,7 +55,7 @@ function oddishOrEvenish(number) {
   return sum % 2 === 0 ? 'Evenish' : 'Oddish';
 }
 
-test('oddishOrEvenish', () => {
+test('oddish evenish', () => {
   const output121 = oddishOrEvenish('121');
   expect(output121).toEqual('Evenish');
   const output41 = oddishOrEvenish('41');
@@ -149,7 +149,7 @@ function uniqueString(strings) {
   return strings[0];
 }
 
-test('uniqueString', () => {
+test('unique string', () => {
   const output1 = uniqueString([
     'Aa',
     'aaa',
@@ -191,7 +191,7 @@ function uniqueChar(string) {
   return letters.length > 0 ? letters[0] : '_';
 }
 
-test('uniqueChar', () => {
+test('unique char', () => {
   const output1 = uniqueChar('abdacabad');
   expect(output1).toBe('c');
   const output2 = uniqueChar('abacabaabacaba');

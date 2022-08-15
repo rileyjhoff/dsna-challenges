@@ -110,3 +110,17 @@ test('fizz buzz', () => {
     16,
   ]);
 });
+
+// CH04-anagrams
+function anagrams(wordOne, wordTwo) {
+  const wordOneSorted = wordOne.split('').sort().join('');
+  const wordTwoSorted = wordTwo.split('').sort().join('');
+  return wordOneSorted === wordTwoSorted ? true : false;
+}
+
+test('anagrams', () => {
+  const output1 = anagrams('superintended', 'unpredestined');
+  expect(output1).toBe(true);
+  const output2 = anagrams('pictorialness', 'documentarily');
+  expect(output2).toBe(false);
+});

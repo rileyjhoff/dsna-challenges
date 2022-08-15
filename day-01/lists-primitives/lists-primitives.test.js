@@ -143,6 +143,7 @@ function uniqueString(strings) {
     }
     if (strings.length < initialLength) {
       strings.splice(i, 1);
+      i--;
     }
   }
   return strings[0];
@@ -169,4 +170,32 @@ test('uniqueString', () => {
     'cba',
   ]);
   expect(output2).toBe('foo');
+});
+
+// CH06-unique-char
+function uniqueChar(string) {
+  const letters = string.split('');
+  for (let i = 0; i < letters.length - 1; i++) {
+    const initialLength = letters.length;
+    for (let j = i + 1; j < letters.length; j++) {
+      if (letters[i] === letters[j]) {
+        letters.splice(j, 1);
+        j--;
+      }
+    }
+    if (letters.length < initialLength) {
+      letters.splice(i, 1);
+      i--;
+    }
+  }
+  return letters.length > 0 ? letters[0] : '_';
+}
+
+test('uniqueChar', () => {
+  const output1 = uniqueChar('abdacabad');
+  expect(output1).toBe('c');
+  const output2 = uniqueChar('abacabaabacaba');
+  expect(output2).toBe('_');
+  const output3 = uniqueChar('abacabad');
+  expect(output3).toBe('c');
 });

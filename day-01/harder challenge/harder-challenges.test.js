@@ -42,7 +42,6 @@ function equalSides(numbers) {
   for (let i = 0; i < numbers.length; i++) {
     if (numbers[i - 1]) leftSideSum += numbers[i - 1];
     rightSideSum -= numbers[i];
-    console.log(leftSideSum, rightSideSum, i);
     if (leftSideSum === rightSideSum) return i;
   }
   return -1;
@@ -55,4 +54,28 @@ test('equal sides', () => {
   expect(output2).toBe(1);
   const output3 = equalSides([20, 10, -80, 10, 10, 15, 35]);
   expect(output3).toBe(0);
+});
+
+// CH-happy-numbers
+function isHappy(n) {
+  const seen = {};
+  let number = n.toString();
+  while (number !== '1') {
+    if (seen[number]) return false;
+    seen[number] = true;
+    number = number
+      .split('')
+      .reduce((acc, curr) => {
+        return (acc += Number(curr) ** 2);
+      }, 0)
+      .toString();
+  }
+  return true;
+}
+
+test('happy numbers', () => {
+  const output1 = isHappy(19);
+  expect(output1).toBe(true);
+  const output2 = isHappy(4);
+  expect(output2).toBe(false);
 });

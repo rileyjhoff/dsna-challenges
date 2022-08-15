@@ -76,6 +76,55 @@ test('jewels stones', () => {
   expect(output2).toBe(0);
 });
 
+// CH-morse-code-words
+function uniqueWords(words) {
+  const codes = [
+    '.-',
+    '-...',
+    '-.-.',
+    '-..',
+    '.',
+    '..-.',
+    '--.',
+    '....',
+    '..',
+    '.---',
+    '-.-',
+    '.-..',
+    '--',
+    '-.',
+    '---',
+    '.--.',
+    '--.-',
+    '.-.',
+    '...',
+    '-',
+    '..-',
+    '...-',
+    '.--',
+    '-..-',
+    '-.--',
+    '--..',
+  ];
+  for (let i = 0; i < words.length; i++) {
+    const letters = words[i].split('');
+    let transformedWord = '';
+    for (let j = 0; j < letters.length; j++) {
+      const index = letters[j].charCodeAt(0) - 97;
+      transformedWord += codes[index];
+    }
+    words[i] = transformedWord;
+  }
+  return [...new Set(words)].length;
+}
+
+test('morse code words', () => {
+  const output1 = uniqueWords(['gin', 'zen', 'gig', 'msg']);
+  expect(output1).toBe(2);
+  const output2 = uniqueWords(['a']);
+  expect(output2).toBe(1);
+});
+
 // CH-pluralize
 function pluralize(words) {
   const pluralizedWords = [];

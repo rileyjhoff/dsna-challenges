@@ -75,3 +75,30 @@ test('jewels stones', () => {
   const output2 = countJewels('z', 'ZZ');
   expect(output2).toBe(0);
 });
+
+// CH-pluralize
+function pluralize(words) {
+  const pluralizedWords = [];
+  for (let i = 0; i < words.length; i++) {
+    const initialLength = words.length;
+    for (let j = i + 1; j < words.length; j++) {
+      if (words[i] === words[j]) {
+        words.splice(j, 1);
+        j--;
+      }
+    }
+    if (words.length < initialLength) {
+      pluralizedWords.push(words[i] + 's');
+    } else pluralizedWords.push(words[i]);
+  }
+  return pluralizedWords;
+}
+
+test('pluralize', () => {
+  const output1 = pluralize(['cow', 'pig', 'cow', 'cow']);
+  expect(output1).toEqual(['cows', 'pig']);
+  const output2 = pluralize(['table', 'table', 'table']);
+  expect(output2).toEqual(['tables']);
+  const output3 = pluralize(['chair', 'pencil', 'arm']);
+  expect(output3).toEqual(['chair', 'pencil', 'arm']);
+});

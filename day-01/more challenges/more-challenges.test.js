@@ -29,3 +29,23 @@ test('alien dictionary', () => {
   const output3 = isSorted(['apple', 'app'], 'abcdefghijklmnopqrstuvwxyz');
   expect(output3).toBe(false);
 });
+
+// CH-convenience-store
+function changeEnough(coins, amount) {
+  const change =
+    coins[0] * 0.25 + coins[1] * 0.1 + coins[2] * 0.05 + coins[3] * 0.01;
+  return change >= amount ? true : false;
+}
+
+test('convenience store', () => {
+  const output1 = changeEnough([2, 100, 0, 0], 14.11);
+  expect(output1).toBe(false);
+  const output2 = changeEnough([0, 0, 20, 5], 0.75);
+  expect(output2).toBe(true);
+  const output3 = changeEnough([30, 40, 20, 5], 12.55);
+  expect(output3).toBe(true);
+  const output4 = changeEnough([10, 0, 0, 50], 3.85);
+  expect(output4).toBe(false);
+  const output5 = changeEnough([1, 0, 5, 219], 19.99);
+  expect(output5).toBe(false);
+});

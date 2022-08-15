@@ -102,3 +102,21 @@ test('pluralize', () => {
   const output3 = pluralize(['chair', 'pencil', 'arm']);
   expect(output3).toEqual(['chair', 'pencil', 'arm']);
 });
+
+// CH-progress-days
+function progressDays(miles) {
+  let progressCount = 0;
+  for (let i = 0; i < miles.length - 1; i++) {
+    if (miles[i + 1] > miles[i]) progressCount++;
+  }
+  return progressCount;
+}
+
+test('progress days', () => {
+  const output1 = progressDays([10, 11, 12, 9, 10]);
+  expect(output1).toBe(3);
+  const output2 = progressDays([6, 5, 4, 3, 2, 9]);
+  expect(output2).toBe(1);
+  const output3 = progressDays([9, 9]);
+  expect(output3).toBe(0);
+});

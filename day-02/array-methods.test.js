@@ -1,3 +1,23 @@
+// CH-add-punctuation
+function addPunctuation(punctuation) {
+  return function (str) {
+    return str + punctuation;
+  };
+}
+
+test('add punctuation', () => {
+  const addExcitement = addPunctuation('!!!');
+  const excitementReturn1 = addExcitement('Hello World');
+  expect(excitementReturn1).toEqual('Hello World!!!');
+  const excitementReturn2 = addExcitement('Pokemon, catch em all');
+  expect(excitementReturn2).toEqual('Pokemon, catch em all!!!');
+  const addUnsure = addPunctuation('?!?');
+  const unsureReturn1 = addUnsure('Hello World');
+  expect(unsureReturn1).toEqual('Hello World?!?');
+  const unsureReturn2 = addUnsure('Pokemon, catch em all');
+  expect(unsureReturn2).toEqual('Pokemon, catch em all?!?');
+});
+
 // CH-every
 function every(arr, predicate) {
   for (let i = 0; i < arr.length; i++) {

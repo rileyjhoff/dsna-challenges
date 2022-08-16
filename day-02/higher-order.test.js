@@ -47,10 +47,22 @@ test('add punctuation', () => {
 });
 
 // CH-say-it
-// const sayIt = (word) => {
-// };
+function sayIt(word) {
+  if (word === undefined) {
+    return null;
+  }
+  let string = word;
+  function next(nextWord) {
+    if (nextWord === undefined) {
+      return string;
+    }
+    string += ' ' + nextWord;
+    return next;
+  }
+  return next;
+}
 
-// test('say it', () => {
-//   const result = sayIt('hello')('my')('name')('is')('JavaScript')();
-//   expect(result).toEqual('hello my name is JavaScript');
-// });
+test('say it', () => {
+  const result = sayIt('hello')('my')('name')('is')('JavaScript')();
+  expect(result).toEqual('hello my name is JavaScript');
+});

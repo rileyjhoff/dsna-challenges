@@ -6,7 +6,7 @@ function every(arr, predicate) {
   return true;
 }
 
-test('array every', () => {
+test('every', () => {
   const predicate = (n) => n % 2 === 0;
   const arr1 = [2, 4, 6];
   const everyReturn1 = every(arr1, predicate);
@@ -27,7 +27,7 @@ function filter(arr, predicate) {
   return filteredArr;
 }
 
-test('array filter', () => {
+test('filter', () => {
   const arr = [2, 6, 5];
   const predicate = (n) => n % 2 === 0;
   const filteredArr = filter(arr, predicate);
@@ -42,7 +42,7 @@ function map(arr, callback) {
   return arr;
 }
 
-test('array map', () => {
+test('map', () => {
   const arr = [1, 6, 5];
   const callback = (n) => n ** 2;
   const mappedArr = map(arr, callback);
@@ -57,7 +57,7 @@ function some(arr, predicate) {
   return false;
 }
 
-test('array some', () => {
+test('some', () => {
   const predicate = (n) => n % 2 === 0;
   const arr1 = [1, 6, 5];
   const someReturn1 = some(arr1, predicate);

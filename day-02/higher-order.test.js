@@ -45,3 +45,12 @@ test('add punctuation', () => {
   const unsureReturn2 = addUnsure2('Pokemon, catch em all');
   expect(unsureReturn2).toEqual('Pokemon, catch em all?!?');
 });
+
+// CH-say-it
+// const sayIt = (word) => {
+// };
+
+// test('say it', () => {
+//   const result = sayIt('hello')('my')('name')('is')('JavaScript')();
+//   expect(result).toEqual('hello my name is JavaScript');
+// });

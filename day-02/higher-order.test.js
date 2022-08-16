@@ -48,12 +48,9 @@ test('add punctuation', () => {
 
 // CH-say-it
 function sayIt(word) {
-  if (word === undefined) {
-    return null;
-  }
   let string = word;
   function next(nextWord) {
-    if (nextWord === undefined) {
+    if (!nextWord) {
       return string;
     }
     string += ' ' + nextWord;

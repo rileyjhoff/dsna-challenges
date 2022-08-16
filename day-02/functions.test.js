@@ -9,11 +9,11 @@ function every(arr, predicate) {
 test('array every', () => {
   const predicate = (n) => n % 2 === 0;
   const arr1 = [2, 4, 6];
-  const everyArr1 = every(arr1, predicate);
-  expect(everyArr1).toBe(true);
+  const everyReturn1 = every(arr1, predicate);
+  expect(everyReturn1).toBe(true);
   const arr2 = [1, 2, 3];
-  const everyArr2 = every(arr2, predicate);
-  expect(everyArr2).toBe(false);
+  const everyReturn2 = every(arr2, predicate);
+  expect(everyReturn2).toBe(false);
 });
 
 // CH-filter
@@ -60,9 +60,9 @@ function some(arr, predicate) {
 test('array some', () => {
   const predicate = (n) => n % 2 === 0;
   const arr1 = [1, 6, 5];
-  const someArr1 = some(arr1, predicate);
-  expect(someArr1).toBe(true);
+  const someReturn1 = some(arr1, predicate);
+  expect(someReturn1).toBe(true);
   const arr2 = [1, 7, 3];
-  const someArr2 = some(arr2, predicate);
-  expect(someArr2).toBe(false);
+  const someReturn2 = some(arr2, predicate);
+  expect(someReturn2).toBe(false);
 });

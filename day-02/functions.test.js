@@ -7,13 +7,12 @@ function every(arr, predicate) {
 }
 
 test('array every', () => {
+  const predicate = (n) => n % 2 === 0;
   const arr1 = [2, 4, 6];
-  const predicate1 = (n) => n % 2 === 0;
-  const everyArr1 = every(arr1, predicate1);
+  const everyArr1 = every(arr1, predicate);
   expect(everyArr1).toBe(true);
   const arr2 = [1, 2, 3];
-  const predicate2 = (n) => n % 2 === 0;
-  const everyArr2 = every(arr2, predicate2);
+  const everyArr2 = every(arr2, predicate);
   expect(everyArr2).toBe(false);
 });
 
@@ -48,4 +47,22 @@ test('array map', () => {
   const callback = (n) => n ** 2;
   const mappedArr = map(arr, callback);
   expect(mappedArr).toEqual([1, 36, 25]);
+});
+
+// CH-some
+function some(arr, predicate) {
+  for (let i = 0; i < arr.length; i++) {
+    if (predicate(arr[i])) return true;
+  }
+  return false;
+}
+
+test('array some', () => {
+  const predicate = (n) => n % 2 === 0;
+  const arr1 = [1, 6, 5];
+  const someArr1 = some(arr1, predicate);
+  expect(someArr1).toBe(true);
+  const arr2 = [1, 7, 3];
+  const someArr2 = some(arr2, predicate);
+  expect(someArr2).toBe(false);
 });

@@ -70,3 +70,17 @@ test('largest even', () => {
   const output3 = largestEven([0, 19, 18973623]);
   expect(output3).toEqual(0);
 });
+
+// CH-repeat-string
+function repeat(txt, n) {
+  return n > 1 ? repeat(txt, n - 1) + txt : txt;
+}
+
+test('repeat string', () => {
+  const output1 = repeat('ab', 3);
+  expect(output1).toEqual('ababab');
+  const output2 = repeat('kiwi', 1);
+  expect(output2).toEqual('kiwi');
+  const output3 = repeat('cherry', 2);
+  expect(output3).toEqual('cherrycherry');
+});

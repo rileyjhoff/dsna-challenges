@@ -1,3 +1,27 @@
+// CH-add-first-element
+function addFirst1(element) {
+  return function (arr) {
+    return Array(element).concat(arr);
+  };
+}
+
+const addFirst2 = (element) => (arr) => Array(element).concat(arr);
+
+test('add first element', () => {
+  const addOrange1 = addFirst1('orange');
+  const excitementReturn1 = addOrange1(['red', 'blue', 'green']);
+  expect(excitementReturn1).toEqual(['orange', 'red', 'blue', 'green']);
+  const addOrange2 = addFirst2('orange');
+  const excitementReturn2 = addOrange2(['blue', 'blue', 'blue']);
+  expect(excitementReturn2).toEqual(['orange', 'blue', 'blue', 'blue']);
+  const addCat1 = addFirst1('cat');
+  const unsureReturn1 = addCat1(['dog', 'bird', 'lizard']);
+  expect(unsureReturn1).toEqual(['cat', 'dog', 'bird', 'lizard']);
+  const addCat2 = addFirst2('cat');
+  const unsureReturn2 = addCat2(['lizard', 'donkey', 'whale']);
+  expect(unsureReturn2).toEqual(['cat', 'lizard', 'donkey', 'whale']);
+});
+
 // CH-add-punctuation
 function addPunctuation1(punctuation) {
   return function (str) {

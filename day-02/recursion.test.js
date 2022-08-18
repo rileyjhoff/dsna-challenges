@@ -63,6 +63,13 @@ function largestEven(nums) {
   if (nums.length === 1) return nums[0] % 2 === 0 ? nums[0] : -1;
 }
 
+function largestEvenSimple(nums, maxEven = -1) {
+  if (!nums.length) return maxEven;
+  const num = nums.pop();
+  if (num % 2 === 0 && num > maxEven) maxEven = num;
+  return largestEvenSimple(nums, maxEven);
+}
+
 test('largest even', () => {
   const output1 = largestEven([3, 7, 2, 1, 7, 9, 10, 13]);
   expect(output1).toEqual(10);

@@ -60,6 +60,7 @@ function largestEven(nums) {
         : first
       : next;
   }
+  if (nums.length === 1) return nums[0] % 2 === 0 ? nums[0] : -1;
 }
 
 test('largest even', () => {

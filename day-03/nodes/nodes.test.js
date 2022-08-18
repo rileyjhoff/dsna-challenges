@@ -179,3 +179,49 @@ test('linked list', () => {
   root.remove('E');
   expect(root.getList()).toEqual('A');
 });
+
+// class TreeNode {
+//   constructor(value) {
+//     this.value = value;
+//     this.children = [];
+//   }
+// }
+
+function traverse(node, spaces = 0, str = '') {
+  str += '\n' + ' '.repeat(spaces) + node.value;
+  if (node.children.length > 0) {
+    spaces += 2;
+    for (const children of node.children) {
+      str = traverse(children, spaces, str);
+    }
+  }
+  return str;
+}
+
+test('tree node traverse', () => {
+  const D = {
+    value: 'D',
+    children: [],
+  };
+  const B = {
+    value: 'B',
+    children: [D],
+  };
+  const C = {
+    value: 'C',
+    children: [],
+  };
+  const F = {
+    value: 'F',
+    children: [],
+  };
+  const E = {
+    value: 'E',
+    children: [F],
+  };
+  const A = {
+    value: 'A',
+    children: [B, C, E],
+  };
+  expect(traverse(A)).toBe('\nA\n  B\n    D\n  C\n  E\n    F');
+});

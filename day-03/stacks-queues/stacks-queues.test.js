@@ -22,7 +22,7 @@ class Stack {
   }
 
   peek() {
-    return this.#list[this.#list.length - 1];
+    return this.#list.length > 0 ? this.#list[this.#list.length - 1] : null;
   }
 }
 
@@ -39,4 +39,49 @@ test('stack', () => {
   expect(stack.peek()).toEqual('fox');
   expect(stack.pop()).toEqual('fox');
   expect(stack.pop()).toEqual(null);
+});
+
+// CH-02-check-syntax
+function checkSyntax(code) {
+  const arr = code.replace(/ /g, '').split('');
+  const parenthesis = new Stack();
+  let length = 0;
+  for (const item of arr) {
+    if (item === '(' || item === ')' || item === '{' || item === '}') {
+      parenthesis.push(item);
+      length++;
+    }
+  }
+  const expecting = new Stack();
+  for (let i = 0; i < length; i++) {
+    const topItem = parenthesis.pop();
+    if (topItem === ')') {
+      expecting.push('(');
+    }
+    if (topItem === '}') {
+      expecting.push('{');
+    }
+    if (topItem === '(') {
+      if (expecting.peek() !== '(') return false;
+      else expecting.pop();
+    }
+    if (topItem === '{') {
+      if (expecting.peek() !== '{') return false;
+      else expecting.pop();
+    }
+  }
+  return expecting.peek() === null ? true : false;
+}
+
+test('check syntax', () => {
+  expect(checkSyntax(`if(true) { return; }`)).toBe(true);
+  expect(checkSyntax(`if(true( { return; }`)).toBe(false);
+  expect(checkSyntax(`if(true) { return;`)).toBe(false);
+  expect(checkSyntax(`(if(true) { return; }`)).toBe(false);
+  expect(checkSyntax(`( true && { name: 'foo' } )`)).toBe(true);
+  expect(checkSyntax(`( true && { name: 'foo' ) )`)).toBe(false);
+  expect(checkSyntax(`( true && ( name: 'foo' } )`)).toBe(false);
+  expect(checkSyntax(`((2 + 3) * (4 + 11 * (2 - 1)))`)).toBe(true);
+  expect(checkSyntax(`((2 + 3) * (4 + 11 * 2 - 1)))`)).toBe(false);
+  expect(checkSyntax(`((2 + 3) * (4 + 11 * (2 - 1))`)).toBe(false);
 });

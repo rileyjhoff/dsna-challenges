@@ -1,3 +1,4 @@
+//CH-binary-node-add
 class BinaryTreeNode {
   constructor(value) {
     this.value = value;
@@ -36,6 +37,7 @@ test('binary node add', () => {
   expect(B.right.left.value).toEqual('C');
 });
 
+//CH-binary-node-find-person
 class PersonTreeNode {
   constructor(person) {
     this.value = person.name;
@@ -130,6 +132,7 @@ test('binary node find person', () => {
   });
 });
 
+//CH-linked-list
 class LinkedListNode {
   constructor(value) {
     this.value = value;
@@ -180,12 +183,14 @@ test('linked list', () => {
   expect(root.getList()).toEqual('A');
 });
 
-// class TreeNode {
-//   constructor(value) {
-//     this.value = value;
-//     this.children = [];
-//   }
-// }
+//CH-tree-nodes-traverse
+
+class TreeNode {
+  constructor({ value, children }) {
+    this.value = value;
+    this.children = children;
+  }
+}
 
 function traverse(node, spaces = 0, str = '') {
   str += '\n' + ' '.repeat(spaces) + node.value;
@@ -199,29 +204,29 @@ function traverse(node, spaces = 0, str = '') {
 }
 
 test('tree node traverse', () => {
-  const D = {
+  const D = new TreeNode({
     value: 'D',
     children: [],
-  };
-  const B = {
+  });
+  const B = new TreeNode({
     value: 'B',
     children: [D],
-  };
-  const C = {
+  });
+  const C = new TreeNode({
     value: 'C',
     children: [],
-  };
-  const F = {
+  });
+  const F = new TreeNode({
     value: 'F',
     children: [],
-  };
-  const E = {
+  });
+  const E = new TreeNode({
     value: 'E',
     children: [F],
-  };
-  const A = {
+  });
+  const A = new TreeNode({
     value: 'A',
     children: [B, C, E],
-  };
+  });
   expect(traverse(A)).toBe('\nA\n  B\n    D\n  C\n  E\n    F');
 });

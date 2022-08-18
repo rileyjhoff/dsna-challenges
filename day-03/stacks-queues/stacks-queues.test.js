@@ -85,3 +85,20 @@ test('check syntax', () => {
   expect(checkSyntax(`((2 + 3) * (4 + 11 * 2 - 1)))`)).toBe(false);
   expect(checkSyntax(`((2 + 3) * (4 + 11 * (2 - 1))`)).toBe(false);
 });
+
+// CH-03-reverse-array-with-stack
+function reverseArray(arr) {
+  const stack = new Stack();
+  for (const item of arr) {
+    stack.push(item);
+  }
+  const returnArr = [];
+  while (stack.peek() !== null) {
+    returnArr[returnArr.length] = stack.pop();
+  }
+  return returnArr;
+}
+
+test('reverse array with stack', () => {
+  expect(reverseArray([12, 3, 5, 7])).toEqual([7, 5, 3, 12]);
+});

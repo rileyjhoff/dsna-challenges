@@ -129,3 +129,53 @@ test('binary node find person', () => {
     address: '123 Main St',
   });
 });
+
+class LinkedListNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+
+  add(node) {
+    if (this.next) {
+      return this.next.add(node);
+    } else this.next = node;
+  }
+
+  getList(node) {
+    if (this.next) {
+      return this.value + ' ' + this.next.getList(node);
+    } else return this.value;
+  }
+
+  remove(node) {
+    if (!this.next) return;
+    else if (node === this.next.value) {
+      const addThisNode = this.next.next;
+      this.next = null;
+      return this.add(addThisNode);
+    } else this.next.remove(node);
+  }
+}
+
+test('linked list', () => {
+  const root = new LinkedListNode('A');
+  const nodeB = new LinkedListNode('B');
+  root.add(nodeB);
+  expect(root.getList()).toEqual('A B');
+  const nodeC = new LinkedListNode('C');
+  const nodeD = new LinkedListNode('D');
+  const nodeE = new LinkedListNode('E');
+  root.add(nodeC);
+  root.add(nodeD);
+  root.add(nodeE);
+  expect(root.getList()).toEqual('A B C D E');
+  root.remove('B');
+  expect(root.getList()).toEqual('A C D E');
+  root.remove('C');
+  expect(root.getList()).toEqual('A D E');
+  root.remove('D');
+  expect(root.getList()).toEqual('A E');
+  root.remove('E');
+  expect(root.getList()).toEqual('A');
+});

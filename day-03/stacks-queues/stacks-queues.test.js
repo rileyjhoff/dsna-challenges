@@ -102,3 +102,51 @@ function reverseArray(arr) {
 test('reverse array with stack', () => {
   expect(reverseArray([12, 3, 5, 7])).toEqual([7, 5, 3, 12]);
 });
+
+// CH-04-queue
+class Queue {
+  #list = [];
+
+  constructor(initialValue) {
+    if (initialValue) {
+      this.#list = initialValue;
+    }
+  }
+
+  enqueue(item) {
+    this.#list[this.#list.length] = item;
+  }
+
+  dequeue() {
+    let itemUpNext, rest;
+    if (this.#list.length > 0) {
+      [itemUpNext, ...rest] = this.#list;
+      this.#list = [...rest];
+    } else itemUpNext = null;
+    return itemUpNext;
+  }
+
+  hasNext() {
+    if (this.#list.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+test('queue', () => {
+  const queue = new Queue();
+  queue.enqueue('fox');
+  queue.enqueue('goose');
+  queue.enqueue('lizard');
+  expect(queue.dequeue()).toEqual('fox');
+  expect(queue.hasNext()).toEqual(true);
+  expect(queue.dequeue()).toEqual('goose');
+  queue.enqueue('llama');
+  expect(queue.dequeue()).toEqual('lizard');
+  expect(queue.hasNext()).toEqual(true);
+  expect(queue.dequeue()).toEqual('llama');
+  expect(queue.hasNext()).toEqual(false);
+  expect(queue.dequeue()).toEqual(null);
+});

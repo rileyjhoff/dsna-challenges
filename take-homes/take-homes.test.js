@@ -237,3 +237,161 @@ test('check if two letters in arr', () => {
     )
   ).toEqual(false);
 });
+
+// image processor
+class Deck {
+  constructor() {
+    this.list = [];
+  }
+
+  addCard(value, suit, originalPosition) {
+    this.list[this.list.length] = { value, suit, originalPosition };
+  }
+
+  getByValueAndSuit(value, suit) {
+    for (const card of this.list) {
+      if (card.value === value && card.suit === suit) return card;
+    }
+  }
+
+  getByPosition(index) {
+    return this.list[index - 1];
+  }
+
+  getLastCard() {
+    return this.list[this.list.length - 1];
+  }
+
+  getFirstCard() {
+    return this.list[0];
+  }
+}
+
+function scanner(values, suits, sortingInstructions) {
+  const deck = new Deck();
+  let sortIndex = 0;
+  if (sortingInstructions) {
+    if (sortingInstructions === 'suits') {
+      const lookingFor = ['clubs', 'diamonds', 'hearts', 'spades'];
+      let lookingForIndex = 0;
+      while (sortIndex < 52) {
+        if (sortIndex % 13 === 0) {
+          lookingForIndex++;
+        }
+        let iter = sortIndex;
+        while (suits[sortIndex] !== lookingFor[lookingForIndex]) {
+          if (suits[sortIndex] === lookingFor[lookingForIndex]) break;
+          if (suits[iter + 1] < suits[iter]) {
+            const holdSuit = suits[iter + 1];
+            const holdValue = values[iter + 1];
+            suits[iter + 1] = suits[iter];
+            values[iter + 1] = values[iter];
+            suits[iter] = holdSuit;
+            values[iter] = holdValue;
+          }
+          if (suits[iter] === lookingFor[lookingForIndex]) {
+            iter = sortIndex;
+          } else iter++;
+        }
+        console.log(sortIndex);
+        sortIndex++;
+      }
+      return values;
+    }
+  }
+}
+
+function sorter(sortingInstructions) {}
+
+test('image processor', () => {
+  const deck = scanner(
+    [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+      11, 12, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1, 2, 3, 4, 5, 6,
+      7, 8, 9, 10, 11, 12, 13,
+    ],
+    [
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+      'clubs',
+      'hearts',
+      'diamonds',
+      'spades',
+    ],
+    'suits'
+  );
+  console.log(deck);
+  // expect(deck.list).toEqual([
+  //   { value: 1, suit: 'clubs', originalPosition: 1 },
+  //   { value: 2, suit: 'hearts', originalPosition: 2 },
+  //   { value: 3, suit: 'diamonds', originalPosition: 3 },
+  //   { value: 4, suit: 'spades', originalPosition: 4 },
+  //   { value: 5, suit: 'clubs', originalPosition: 5 },
+  // ]);
+  // expect(deck.getByValueAndSuit(1, 'clubs')).toEqual({
+  //   value: 1,
+  //   suit: 'clubs',
+  //   originalPosition: 1,
+  // });
+  // expect(deck.getByPosition(1)).toEqual({
+  //   value: 1,
+  //   suit: 'clubs',
+  //   originalPosition: 1,
+  // });
+  // expect(deck.getFirstCard()).toEqual({
+  //   value: 1,
+  //   suit: 'clubs',
+  //   originalPosition: 1,
+  // });
+  // expect(deck.getLastCard()).toEqual({
+  //   value: 5,
+  //   suit: 'clubs',
+  //   originalPosition: 5,
+  // });
+});

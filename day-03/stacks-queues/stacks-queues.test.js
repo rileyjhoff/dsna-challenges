@@ -150,3 +150,53 @@ test('queue', () => {
   expect(queue.hasNext()).toEqual(false);
   expect(queue.dequeue()).toEqual(null);
 });
+
+// CH-05-O-1-dequeue
+class QueueO1 {
+  value;
+  next;
+
+  constructor(value) {
+    this.value = value ? value : null;
+    this.next = null;
+  }
+
+  enqueue(item) {
+    if (this.next) {
+      return this.next.enqueue(item);
+    } else this.next = new QueueO1(item);
+  }
+
+  dequeue() {
+    if (!this.next) return null;
+    const dequeued = this.next.value;
+    if (this.next.next) {
+      this.next = this.next.next;
+    } else this.next = null;
+    return dequeued;
+  }
+
+  hasNext() {
+    if (this.next) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+test('O-1 dequeue', () => {
+  const queue = new QueueO1();
+  queue.enqueue('fox');
+  queue.enqueue('goose');
+  queue.enqueue('lizard');
+  expect(queue.dequeue()).toEqual('fox');
+  expect(queue.hasNext()).toEqual(true);
+  expect(queue.dequeue()).toEqual('goose');
+  queue.enqueue('llama');
+  expect(queue.dequeue()).toEqual('lizard');
+  expect(queue.hasNext()).toEqual(true);
+  expect(queue.dequeue()).toEqual('llama');
+  expect(queue.hasNext()).toEqual(false);
+  expect(queue.dequeue()).toEqual(null);
+});

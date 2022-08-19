@@ -175,3 +175,31 @@ test('connect 4', () => {
   expect(isWinningBoard(winningGameboardDiagonal2)).toEqual(true);
   expect(isWinningBoard(losingGameboard1)).toEqual(false);
 });
+
+// take an array of arrays where each array has 2 data points
+// ex. [[data, data],[data,data]] and turn it into an object where the
+// 1st data point of each array is the key and the 2nd data point is the value within the object.
+
+function arrayOfArraysToObj(arr) {
+  let obj = {};
+  for (const item of arr) {
+    obj[item[0]] = item[1];
+  }
+  return obj;
+}
+
+test('array of arrays to obj', () => {
+  expect(
+    arrayOfArraysToObj([
+      [1, 234],
+      [2, 555],
+      [1234, 2342],
+      [222, 343],
+    ])
+  ).toEqual({
+    1: 234,
+    2: 555,
+    1234: 2342,
+    222: 343,
+  });
+});

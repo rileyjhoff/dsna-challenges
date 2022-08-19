@@ -203,3 +203,37 @@ test('array of arrays to obj', () => {
     222: 343,
   });
 });
+
+// Write a function that takes an array and two letters,
+// and returns true if the two letters appear in the array at least once.
+
+function checkIfTwoLettersInArr(arr, letters) {
+  return arr.some((item) => item.includes(letters));
+}
+
+test('check if two letters in arr', () => {
+  expect(
+    checkIfTwoLettersInArr(
+      [
+        'the lions of teranga',
+        'tiger woods',
+        'The Truman Show',
+        'Shutter Island',
+        'The Gold Rush',
+      ],
+      'ti'
+    )
+  ).toEqual(true);
+  expect(
+    checkIfTwoLettersInArr(
+      [
+        'the lions of teranga',
+        'tiger woods',
+        'The Truman Show',
+        'Shutter Island',
+        'The Gold Rush',
+      ],
+      'at'
+    )
+  ).toEqual(false);
+});
